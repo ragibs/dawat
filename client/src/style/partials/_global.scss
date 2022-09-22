@@ -1,0 +1,17 @@
+// css resets
+@use "fonts" as *;
+@use "variables" as *;
+@use "colors" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: $primary-background-color;
+}
