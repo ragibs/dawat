@@ -22,7 +22,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search/:cityId" element={<Search />} />
             <Route
               path="/reservation"
               element={

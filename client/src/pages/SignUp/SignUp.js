@@ -2,9 +2,13 @@ import "./SignUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { UserAuth } from "../../contexts/AuthContext";
+import { db } from "../../firebase.config";
+import { setDoc, doc, where, getDocs } from "firebase/firestore";
 
 function SignUp() {
   const [email, setEmail] = useState("");
+  const [firstN, setFirstN] = useState("");
+  const [lastN, setLastN] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { createUser } = UserAuth();
@@ -14,9 +18,14 @@ function SignUp() {
     e.preventDefault();
     setError("");
     try {
-      await createUser(email, password);
+      await createUser(email, password).then((cred) => {
+        return setDoc(doc(db, "users", cred.user.uid), {
+          firstName: `${firstN}`,
+          lastName: `${lastN}`,
+        });
+      });
       navigate("/");
-    } catch (error) {
+    } catch (e) {
       setError(e.message);
       console.log(e.message);
     }
@@ -30,8 +39,16 @@ function SignUp() {
           placeholder="email"
           type="email"
         />
-        <input placeholder="first name" type="text" />
-        <input placeholder="last name" type="text" />
+        <input
+          placeholder="first name"
+          type="text"
+          onChange={(e) => setFirstN(e.target.value)}
+        />
+        <input
+          placeholder="last name"
+          type="text"
+          onChange={(e) => setLastN(e.target.value)}
+        />
         <input
           onChange={(e) => setPassword(e.target.value)}
           placeholder="password"
