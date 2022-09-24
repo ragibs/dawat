@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../../firebase.config";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import Header from "../../component/Header/Header";
 
 function Search() {
   const [data, setData] = useState([]);
@@ -46,18 +47,37 @@ function Search() {
   // }
 
   return (
-    <div>
-      {data?.map((content) => (
-        <Link key={content.listingId} to={`/${content.listingId}`}>
-          <ul>
-            <li>{content.city}</li>
-            <li>{content.hostBio}</li>
-            <li>{content.country}</li>
-            <li>{content.description}</li>
-          </ul>
-        </Link>
-      ))}
-    </div>
+    <>
+      <Header />
+      <h1 className="search__result-header">
+        {data.length} invites were found with the search criteria {searchWord}
+      </h1>
+      <div className="searchlist__container">
+        {data?.map((content) => (
+          <Link
+            key={content.listingId}
+            to={`/${content.listingId}`}
+            className="search-card"
+          >
+            <header className="search-card-header">
+              <h2 className="search-card-h2">{content.title}</h2>
+              <p>{content.hostBio}</p>
+            </header>
+            <div className="search-card-host">
+              <img
+                className="search-host-avatar"
+                src={content.hostAvatar}
+                alt=""
+              />
+              <div className="search-host-name">
+                <div className="search-host-name-prefix">{content.city}</div>
+                {content.hostFName} {content.hostLName}
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 }
 

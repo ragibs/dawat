@@ -1,10 +1,25 @@
-.logo {
-  width: 100px;
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.navbar-header {
+  width: 100%;
+  padding: 20px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__list {
+    list-style: none;
+    display: inline-block;
+    margin-left: 40px;
+  }
+  &__link {
+    text-decoration: none;
+    color: $button-hover-color;
+  }
 }
 
-.navbar-list {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 0%;
+.logo-header {
+  width: 120px;
 }

@@ -1,0 +1,74 @@
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.searchlist__container {
+  padding: 0 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.search__result-header {
+  padding: 0 8%;
+}
+
+.search-card-host {
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  align-items: center;
+}
+
+.search-host-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+  margin: 16px 10px;
+}
+.search-host-name {
+  margin-left: 50px;
+  color: $button-hover-color;
+}
+.search-host-name-prefix {
+  font-style: normal;
+  font-weight: 700;
+  color: #7a7a8c;
+}
+.search-card-h2 {
+  color: $search-hover-color;
+  &:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+.search-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  min-height: 350px;
+  width: 70%;
+  min-width: 250px;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgb(30, 30, 47);
+  background: linear-gradient(
+    139deg,
+    rgba(30, 30, 47, 1) 84%,
+    rgba(151, 198, 128, 1) 100%
+  );
+  transition: 0.2s;
+  &:hover {
+    transform: translate(-1rem);
+  }
+  &:hover ~ .card {
+    transform: translateX(130px);
+  }
+}

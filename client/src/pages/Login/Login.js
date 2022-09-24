@@ -2,6 +2,9 @@ import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../contexts/AuthContext";
 import { useState } from "react";
+import Header from "../../component/Header/Header";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,8 +12,21 @@ function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  //error state for submission
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    //form validation
+    setEmailError(false);
+    setPasswordError(false);
+    if (email === "") {
+      setEmailError(true);
+    }
+    if (password.length < 6) {
+      setPasswordError(true);
+    }
     setError("");
     try {
       await signIn(email, password);
@@ -22,21 +38,42 @@ function Login() {
 
   const { signIn } = UserAuth();
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="email"
-          type="email"
-        />
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="password"
-          type="password"
-        />
-        <button type="submit">Login</button>
-        <p>Don't have an account? </p> <Link to="/signup">Sign up</Link>
-      </form>
+    <div className="login__component">
+      <Header />
+      <section className="login">
+        <div className="login__container">
+          <h2 className="login__title">Login</h2>
+          <form onSubmit={handleSubmit} className="loginForm">
+            <TextField
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              required
+              error={emailError}
+              helperText="Enter registered email"
+            />
+            <TextField
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              autoComplete="on"
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              required
+              error={passwordError}
+              helperText="Enter your password"
+            />
+            <Button size="large" variant="contained" type="submit">
+              Login
+            </Button>
+            <p>
+              Don't have an account? <Link to="/signup">Sign up</Link>{" "}
+            </p>
+          </form>
+        </div>
+      </section>
     </div>
   );
 }

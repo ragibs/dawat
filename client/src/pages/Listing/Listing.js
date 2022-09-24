@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
 import { useParams } from "react-router-dom";
+import Header from "../../component/Header/Header";
 
 function Listing() {
   const { listingId } = useParams();
@@ -33,19 +34,26 @@ function Listing() {
 
   return (
     <div>
-      <h1>{currentListing.title}</h1>
-      <h3>Hosted By</h3>
-      <h2>{currentListing.hostFName}</h2>
-      <img
-        className="userAvatar"
-        src="https://firebasestorage.googleapis.com/v0/b/react-dashboard-8dd22.appspot.com/o/bangkok%20listing%201%2Fhost%20portrait.jpg?alt=media&token=b6d58fb3-013f-4cd6-99b5-2cb9475ad6a6"
-        alt=""
-      />
-      <h3>About your host</h3>
-      <p>{currentListing.hostBio}</p>
-      <h3>Description</h3>
-      <p>{currentListing.description}</p>
-      <button>BOOK</button>
+      <Header />
+      <div className="listing-container">
+        <h1>{currentListing.title}</h1>
+        <div className="listing__host-info">
+          <h4>Hosted By</h4>
+          <h2 className="listing__hostFName">{currentListing.hostFName}</h2>
+          <img
+            className="search-host-avatar"
+            src={currentListing.hostAvatar}
+            alt=""
+          />
+          <h4>About your host</h4>
+          <p>{currentListing.hostBio}</p>
+        </div>
+        <div className="listing__info">
+          <h4>Description</h4>
+          <p className="listing__description">{currentListing.description}</p>
+          <div className="listing__description-misc"></div>
+        </div>
+      </div>
     </div>
   );
 }

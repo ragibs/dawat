@@ -1,0 +1,118 @@
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.ourPicks {
+  display: flex;
+  background-color: $primary-background-color;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ourPicks__title {
+  color: $primary-text-color;
+  font-size: 60px;
+  font-family: "Typo Round", sans-serif;
+  @include tablet {
+    font-size: 70px;
+  }
+}
+
+.ourPicks__subtext {
+  padding: 0px 8%;
+  @include body-large-mobile;
+}
+.card-list {
+  width: 100%;
+  display: flex;
+  padding: 3rem;
+  background: rgb(252, 251, 250);
+  background: linear-gradient(
+    180deg,
+    rgba(252, 251, 250, 1) 65%,
+    rgba(151, 198, 128, 1) 100%
+  );
+  color: white;
+  font-family: "Inter";
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #201c29;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, 0.25),
+      inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  }
+  &::-webkit-scrollbar-track {
+    background: linear-gradient(
+      90deg,
+      #201c29,
+      #201c29 1px,
+      #17141d 0,
+      #17141d
+    );
+  }
+}
+.card-h2 {
+  color: white;
+  &:hover {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  color: white;
+  height: 350px;
+  width: 100%;
+  min-width: 250px;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background-color: $primary-text-color;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  transition: 0.2s;
+  &:hover {
+    transform: translateY(-1rem);
+  }
+  &:hover ~ .card {
+    transform: translateX(130px);
+  }
+  &:not(:first-child) {
+    margin-left: -130px;
+  }
+}
+
+.card-host {
+  position: relative;
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  align-items: center;
+  margin: 3rem 0 0;
+}
+
+.host-avatar {
+  width: 100px;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+  margin: 16px 10px;
+}
+.host-name {
+  margin-left: 50px;
+  color: $button-hover-color;
+}
+.host-name-prefix {
+  font-style: normal;
+  font-weight: 700;
+  color: #7a7a8c;
+}
