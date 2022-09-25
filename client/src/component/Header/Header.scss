@@ -4,11 +4,13 @@
 @use "../../style/partials/global" as *;
 
 .navbar-header {
+  background-color: $primary-background-color;
   width: 100%;
   padding: 20px 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   &__list {
     list-style: none;
     display: inline-block;

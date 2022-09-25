@@ -1,4 +1,147 @@
-.userAvatar {
-  height: 100px;
-  border-radius: 40px;
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.listing {
+  &-container {
+    padding: 20px 8%;
+    padding-top: 0;
+    gap: 20px;
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__left {
+    @include tablet {
+      max-width: 50%;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+    }
+  }
+  &__right {
+    @include tablet {
+      max-width: 50%;
+      margin-top: 20px;
+    }
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+  }
+  &__text {
+    font-weight: 500;
+  }
+  &__main-info {
+  }
+  &__host-info {
+  }
+  &__name-image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__tags {
+    color: $button-hover-color;
+    font-family: "Typo Round";
+  }
+  &__tags-small {
+    color: $search-hover-color;
+    font-family: "Typo Round";
+    margin-bottom: 0px;
+  }
+  &__hostFName {
+    margin-top: 80px;
+    font-weight: 800;
+  }
+  &__info {
+  }
+  &__description-misc {
+  }
+  &__misc-container {
+  }
+  &__misc-text {
+  }
+}
+
+.back-button-desktop {
+  align-self: flex-end;
+  display: none;
+  @include tablet {
+    display: flex;
+  }
+}
+
+.back-button-container {
+  display: flex;
+  justify-content: flex-end;
+  @include tablet {
+    display: none;
+  }
+}
+
+.listing__booking-container {
+  // box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+  //   rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+  //   rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  background-image: url(../../assets/images/wave-haikei.svg);
+  background-position: 100%;
+  padding: 20px 8%;
+  padding-top: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  // max-width: 302px;
+  @include tablet {
+    max-width: 100%;
+  }
+}
+
+.bookingForm {
+  display: flex;
+  gap: 20px;
+  &__field {
+    max-width: 230px;
+    min-width: 180px;
+  }
+}
+
+.bookingForm-right {
+  display: flex;
+  justify-content: space-between;
+  @include tablet {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.bookingForm-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookingForm__total {
+  font-size: 16px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.map {
+  margin-bottom: 20px;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+.mapboxgl-ctrl {
+  display: none;
 }

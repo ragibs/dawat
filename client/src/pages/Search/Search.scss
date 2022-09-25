@@ -48,6 +48,17 @@
     background-clip: text;
   }
 }
+
+.search__price-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.search__price {
+  color: white;
+  margin: 0;
+}
 .search-card {
   text-decoration: none;
   display: flex;

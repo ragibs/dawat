@@ -26,6 +26,7 @@
 .card-list {
   width: 100%;
   display: flex;
+  justify-content: center;
   padding: 3rem;
   background: rgb(252, 251, 250);
   background: linear-gradient(
@@ -75,6 +76,7 @@
   height: 350px;
   width: 100%;
   min-width: 250px;
+  max-width: 400px;
   padding: 1.5rem;
   border-radius: 16px;
   background-color: $primary-text-color;

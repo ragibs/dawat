@@ -71,10 +71,18 @@
     height: auto;
   }
 }
+
+//odd video media query stuff
+@media only screen and (min-width: 2040px) {
+  .video {
+  }
+}
+
 .navbar__login-link {
   text-decoration: none;
   color: $primary-background-color;
 }
+
 //search stuff
 :root {
   --color-background: #222;
@@ -124,7 +132,7 @@
     width: 0;
 
     &::placeholder {
-      color: var(--color);
+      color: $search-hover-color;
       opacity: 0.75;
     }
   }
@@ -137,7 +145,7 @@
 
   &__label,
   &__submit {
-    color: var(--color);
+    color: $search-hover-color;
     cursor: pointer;
     display: block;
     height: 100%;
@@ -148,7 +156,7 @@
     &:hover,
     &:focus,
     &:active {
-      color: var(--color-highlight);
+      color: $search-hover-color;
     }
   }
 
@@ -175,7 +183,7 @@
   }
 
   &:focus-within {
-    border-color: var(--color);
+    border-color: $search-hover-color;
 
     #{$root} {
       &__input {

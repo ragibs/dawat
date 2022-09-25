@@ -74,6 +74,9 @@ function Search() {
                 {content.hostFName} {content.hostLName}
               </div>
             </div>
+            <div className="search__price-container">
+              <h2 className="search__price">From ${content.price}</h2>
+            </div>
           </Link>
         ))}
       </div>
