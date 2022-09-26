@@ -106,6 +106,13 @@ function Header() {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
+            <MenuItem
+              onClick={() => {
+                navigate("/reservation");
+              }}
+            >
+              My Reservations
+            </MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </li>

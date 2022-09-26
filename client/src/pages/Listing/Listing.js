@@ -2,12 +2,12 @@ import "./Listing.scss";
 import { db } from "../../firebase.config";
 import { useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { getStorage, ref } from "firebase/storage";
-import { useParams, Navigate, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Header from "../../component/Header/Header";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 import Map from "react-map-gl";
 import { FormControl } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -17,6 +17,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import BookingModal from "../../component/BookingModal/BookingModal";
 
 function Listing() {
   const { listingId } = useParams();
@@ -26,7 +27,6 @@ function Listing() {
   const colRef = collection(db, "listings");
 
   //queries
-
   const q = query(colRef, where("listingId", "==", `${listingId}`));
 
   useEffect(() => {
@@ -82,28 +82,59 @@ function Listing() {
       />
     );
   } else {
-    mapGenetaor = <h2>Map Loading...</h2>;
+    mapGenetaor = (
+      <Box sx={{ display: "flex" }}>
+        <CircularProgress />
+      </Box>
+    );
   }
 
-  //
+  //datepicket
   const [value, setValue] = useState(null);
-
   // guest formfield loop function
   let guestAllowance = [];
   for (let i = currentListing.minG - 1; i < currentListing.maxG; i++) {
     guestAllowance.push(i + 1);
   }
-  const [totalGuests, setTotalGuests] = useState(currentListing.minG);
-
+  const [totalGuests, setTotalGuests] = useState(null);
   const handleChange = (event) => {
     setTotalGuests(event.target.value);
   };
 
+  //booking modal stuff
+  const [bookingModal, setBookingModal] = useState(false); //to control delete modal state
+  const [bookingInfo, setBookingInfo] = useState([""]); // to pass booking info to modal
+
+  //booking handlr
+
+  const bookingHandlr = (listingId) => {
+    let bookingDate = Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "2-digit",
+    }).format(value.$d);
+
+    setBookingInfo([
+      listingId,
+      bookingDate,
+      totalGuests,
+      currentListing.hostFName,
+      totalGuests * currentListing.price,
+      currentListing.hostAvatar,
+    ]);
+    setBookingModal(true);
+  };
   return (
     <div>
       <Header />
 
       <div className="listing-container">
+        {bookingModal && (
+          <BookingModal
+            setBookingModal={setBookingModal}
+            bookingInfo={bookingInfo}
+          />
+        )}
         <section className="listing__left">
           <h1 className="listing__title">{currentListing.title}</h1>
 
@@ -210,7 +241,6 @@ function Listing() {
                   select
                   label="Number of guests"
                   defaultValue=""
-                  value={totalGuests}
                   onChange={handleChange}
                   helperText="Please select total number of guests"
                   required
@@ -228,6 +258,8 @@ function Listing() {
                 </h3>
                 <div className="button-container">
                   <Button
+                    disabled={value === null || totalGuests === null}
+                    onClick={() => bookingHandlr(currentListing.listingId)}
                     variant="contained"
                     size="large"
                     type="submit"

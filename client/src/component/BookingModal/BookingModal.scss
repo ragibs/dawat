@@ -1,0 +1,94 @@
+@use "../../style/partials/global" as *;
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/fonts" as *;
+
+.bookingModal {
+  &-bg {
+    background-color: rgba(189, 197, 213, 0.75);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+  &__top-container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      height: 80%;
+    }
+  }
+
+  &-container {
+    width: 31.25rem;
+    height: 50.25rem;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0.3125rem 0.9375rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5625rem;
+    justify-content: space-between;
+    @include tablet {
+      //   height: 16.375rem;
+      width: 50rem;
+    }
+  }
+
+  &-left-contianer {
+    background-image: url(../../assets/images/checkoutphoto.jpg);
+    height: 40%;
+    background-position: 50%;
+    border-radius: 20px;
+    @include tablet {
+      width: 50%;
+      height: 100%;
+      margin-right: 10px;
+    }
+  }
+  &__title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 0.625rem;
+    text-align: start;
+    margin-bottom: 1.5rem;
+  }
+  &__close-btn {
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: none;
+    font-size: 0.9375rem;
+    cursor: pointer;
+  }
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    @include tablet {
+      width: 50%;
+      height: 100%;
+    }
+  }
+  &__text {
+    @include body-large-mobile;
+    @include tablet {
+      @include body-large-tablet;
+    }
+  }
+  &__btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3125rem;
+    margin-top: 10px;
+    @include tablet {
+      justify-content: flex-end;
+    }
+  }
+}
