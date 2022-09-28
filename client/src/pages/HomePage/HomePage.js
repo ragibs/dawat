@@ -1,6 +1,6 @@
 import "./HomePage.scss";
 import OurPicks from "../../component/OurPick/OurPicks";
-import logo from "../../assets/Logo/Untitled-2.png";
+import logo from "../../assets/Logo/logo-alternate.png";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import video from "../../assets/videos/hero-section-video-1080p.mp4";
@@ -10,6 +10,9 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import WhatIsDawat from "../../component/WhatIsDawat/WhatIsDawat";
+import sam from "../../assets/images/sam.png";
+import { motion } from "framer-motion";
 
 //search default state
 function HomePage() {
@@ -67,7 +70,7 @@ function HomePage() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="Samwise Gamgee" src={sam} />
         </IconButton>
         <Menu
           anchorEl={anchorEl}
@@ -118,7 +121,11 @@ function HomePage() {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="hero">
         <video
           className="video"
@@ -180,7 +187,8 @@ function HomePage() {
         </div>
       </div>
       <OurPicks />
-    </>
+      <WhatIsDawat />
+    </motion.div>
   );
 }
 

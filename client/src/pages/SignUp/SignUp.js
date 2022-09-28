@@ -2,12 +2,13 @@ import "./SignUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { UserAuth } from "../../contexts/AuthContext";
-
+import { Navigate } from "react-router-dom";
 import { db } from "../../firebase.config";
 import { setDoc, doc } from "firebase/firestore";
 import Header from "../../component/Header/Header";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { motion } from "framer-motion";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ function SignUp() {
   const [lastN, setLastN] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { createUser } = UserAuth();
+  const { createUser, user } = UserAuth();
   const navigate = useNavigate();
 
   //error state for submission
@@ -59,72 +60,80 @@ function SignUp() {
       console.log(e.message);
     }
   };
+  if (user) {
+    return <Navigate replace to="/" />;
+  } else {
+    return (
+      <motion.div
+        className="signUp__component"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Header />
+        <section className="signUp">
+          <div className="signUp__container">
+            <h2 className="signUp__title">Sign Up</h2>
+            <form className="signUpForm" onSubmit={handleSubmit}>
+              <TextField
+                onChange={(e) => setFirstN(e.target.value)}
+                type="text"
+                id="outlined-basic"
+                label="First Name"
+                variant="outlined"
+                required
+                helperText="Your first name"
+                error={firstNameError}
+                style={{ width: 300 }}
+              />
+              <TextField
+                onChange={(e) => setLastN(e.target.value)}
+                type="text"
+                id="outlined-basic"
+                label="Last Name"
+                variant="outlined"
+                required
+                helperText="Your last name"
+                error={lastNameError}
+                style={{ width: 300 }}
+              />
+              <TextField
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                required
+                helperText="Please enter a valid email address"
+                error={emailError}
+                style={{ width: 300 }}
+              />
 
-  return (
-    <div className="signUp__component">
-      <Header />
-      <section className="signUp">
-        <div className="signUp__container">
-          <h2 className="signUp__title">Sign Up</h2>
-          <form className="signUpForm" onSubmit={handleSubmit}>
-            <TextField
-              onChange={(e) => setFirstN(e.target.value)}
-              type="text"
-              id="outlined-basic"
-              label="First Name"
-              variant="outlined"
-              required
-              helperText="Your first name"
-              error={firstNameError}
-              style={{ width: 300 }}
-            />
-            <TextField
-              onChange={(e) => setLastN(e.target.value)}
-              type="text"
-              id="outlined-basic"
-              label="Last Name"
-              variant="outlined"
-              required
-              helperText="Your last name"
-              error={lastNameError}
-              style={{ width: 300 }}
-            />
-            <TextField
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              required
-              helperText="Please enter a valid email address"
-              error={emailError}
-              style={{ width: 300 }}
-            />
+              <TextField
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                id="outlined-basic"
+                label="Password"
+                variant="outlined"
+                autoComplete="on"
+                required
+                helperText="Password with more than 6 characters"
+                error={passwordError}
+                style={{ width: 300 }}
+              />
 
-            <TextField
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              id="outlined-basic"
-              label="Password"
-              variant="outlined"
-              autoComplete="on"
-              required
-              helperText="Password with more than 6 characters"
-              error={passwordError}
-              style={{ width: 300 }}
-            />
-
-            <Button size="large" variant="contained" type="submit">
-              Sign Up
-            </Button>
-            <p>
-              Already have an account? <Link to="/login">Sign in</Link>
-            </p>
-          </form>
-        </div>
-      </section>
-    </div>
-  );
+              <Button size="large" variant="contained" type="submit">
+                Sign Up
+              </Button>
+              <p>
+                Already have an account? <Link to="/login">Sign in</Link>
+              </p>
+            </form>
+          </div>
+        </section>
+      </motion.div>
+    );
+  }
 }
 
 export default SignUp;

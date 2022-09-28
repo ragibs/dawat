@@ -10,6 +10,8 @@ import { AuthContextProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./component/ProtectedRoute/ProtectedRoute";
 import Reservation from "./pages/Reservation/Reservation";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Footer from "./component/Footer/Footer";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const theme = createTheme({
@@ -41,22 +43,25 @@ function App() {
       <BrowserRouter>
         <AuthContextProvider>
           <ThemeProvider theme={theme}>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/" element={<HomePage />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/search/:cityId" element={<Search />} />
-              <Route
-                path="/reservation"
-                element={
-                  <ProtectedRoute>
-                    <Reservation />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/:listingId" element={<Listing />} />
-            </Routes>
+            <AnimatePresence>
+              <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="*" element={<NotFound />} />
+                <Route path="/search/:cityId" element={<Search />} />
+                <Route
+                  path="/reservation"
+                  element={
+                    <ProtectedRoute>
+                      <Reservation />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/:listingId" element={<Listing />} />
+              </Routes>
+            </AnimatePresence>
+            <Footer />
           </ThemeProvider>
         </AuthContextProvider>
       </BrowserRouter>

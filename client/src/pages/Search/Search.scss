@@ -3,11 +3,22 @@
 @use "../../style/partials/mixins" as *;
 @use "../../style/partials/global" as *;
 
-.searchlist__container {
+.searchlist-component {
   padding: 0 8%;
+  display: flex;
+  background: rgb(252, 251, 250);
+  background: linear-gradient(
+    180deg,
+    rgba(252, 251, 250, 1) 88%,
+    rgba(151, 198, 128, 1) 100%
+  );
+}
+
+.searchlist__container {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-bottom: 30px;
 }
 
 .search__result-header {
@@ -24,7 +35,7 @@
   width: 100px;
   height: 100px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 10%;
   display: block;
   overflow: hidden;
   margin: 16px 10px;
@@ -39,7 +50,7 @@
   color: #7a7a8c;
 }
 .search-card-h2 {
-  color: $search-hover-color;
+  color: $primary-text-color;
   &:hover {
     background: linear-gradient(90deg, #ff8a00, #e52e71);
     text-shadow: none;
@@ -47,6 +58,9 @@
     -webkit-background-clip: text;
     background-clip: text;
   }
+}
+.mapboxgl-canvas {
+  border-radius: 5px;
 }
 
 .search__price-container {
@@ -63,17 +77,17 @@
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: $primary-text-color;
   min-height: 350px;
-  width: 70%;
+  width: 90%;
   min-width: 250px;
   padding: 1.5rem;
   border-radius: 16px;
-  background: rgb(30, 30, 47);
+  background: rgb(233, 237, 201);
   background: linear-gradient(
     139deg,
-    rgba(30, 30, 47, 1) 84%,
-    rgba(151, 198, 128, 1) 100%
+    rgba(233, 237, 201, 1) 64%,
+    rgba(30, 30, 47, 1) 100%
   );
   transition: 0.2s;
   &:hover {

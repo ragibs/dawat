@@ -8,6 +8,12 @@
     padding: 20px 8%;
     padding-top: 0;
     gap: 20px;
+    background: rgb(252, 251, 250);
+    background: linear-gradient(
+      180deg,
+      rgba(252, 251, 250, 1) 88%,
+      rgba(151, 198, 128, 1) 100%
+    );
     @include tablet {
       display: flex;
       justify-content: space-between;
@@ -53,6 +59,9 @@
     color: $search-hover-color;
     font-family: "Typo Round";
     margin-bottom: 0px;
+    @include tablet {
+      max-width: 90px;
+    }
   }
   &__hostFName {
     margin-top: 80px;
@@ -61,6 +70,14 @@
   &__info {
   }
   &__description-misc {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      width: 80%;
+    }
   }
   &__misc-container {
   }
@@ -85,12 +102,10 @@
 }
 
 .listing__booking-container {
-  // box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
-  //   rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-  //   rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  background-image: url(../../assets/images/wave-haikei.svg);
-  background-position: 100%;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  border-radius: 5px;
   padding: 20px 8%;
+  margin-top: 20px;
   padding-top: 35px;
   display: flex;
   flex-direction: column;
@@ -99,7 +114,8 @@
   width: 100%;
   // max-width: 302px;
   @include tablet {
-    max-width: 100%;
+    max-width: 400px;
+    margin-bottom: 150px;
   }
 }
 
@@ -128,6 +144,9 @@
 
 .bookingForm__total {
   font-size: 16px;
+}
+
+.bookingForm__title {
 }
 
 .button-container {

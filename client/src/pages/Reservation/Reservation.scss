@@ -2,3 +2,19 @@
 @use "../../style/partials/variables" as *;
 @use "../../style/partials/mixins" as *;
 @use "../../style/partials/global" as *;
+
+.reservation {
+  &-component {
+    min-height: 100vh;
+    background: rgb(252, 251, 250);
+    background: linear-gradient(
+      180deg,
+      rgba(252, 251, 250, 1) 65%,
+      rgba(151, 198, 128, 1) 100%
+    );
+  }
+  &__container {
+    padding: 0 8%;
+    margin-bottom: 30px;
+  }
+}

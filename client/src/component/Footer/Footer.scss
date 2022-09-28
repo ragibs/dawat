@@ -1,0 +1,70 @@
+@use "../../style/partials/global" as *;
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/fonts" as *;
+
+.footer {
+  background-color: #97c680;
+  color: $primary-background-color;
+  padding: 0 5%;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+
+  @include desktop {
+    padding: 1rem 10% 1rem;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__top-left {
+    @include tablet {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    padding-top: 1.5rem;
+    margin-top: 0;
+  }
+
+  &__social {
+    @include tablet {
+      padding-left: 1.7rem;
+    }
+  }
+  &__icon {
+    padding-right: 1.1rem;
+    text-decoration: none;
+  }
+  &__icon-svg {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+  &__copyright {
+    margin-top: 1rem;
+    text-align: center;
+    // @include mobile-footer-copy;
+    // @include tablet {
+    //   @include desk-tab-footer-copy;
+    // }
+    &--moible {
+      @include tablet {
+        display: none;
+      }
+    }
+    &--tablet {
+      display: none;
+      @include tablet {
+        display: block;
+      }
+    }
+  }
+  &__right {
+    margin-top: 1.875rem;
+  }
+}

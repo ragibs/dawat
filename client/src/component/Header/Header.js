@@ -8,7 +8,7 @@ import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Divider from "@mui/material/Divider";
+import sam from "../../assets/images/sam.png";
 
 function Header() {
   //account drop down handle
@@ -69,7 +69,7 @@ function Header() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            <Avatar alt="Samwise Gamgee" src={sam} />
           </IconButton>
           <Menu
             anchorEl={anchorEl}

@@ -18,6 +18,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import BookingModal from "../../component/BookingModal/BookingModal";
+import { motion } from "framer-motion";
 
 function Listing() {
   const { listingId } = useParams();
@@ -77,7 +78,7 @@ function Listing() {
           latitude: currentListing.geo._lat,
           zoom: 14,
         }}
-        style={{ width: 300, height: 300 }}
+        style={{ width: 400, height: 300, borderRadius: "5px" }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
       />
     );
@@ -121,11 +122,17 @@ function Listing() {
       currentListing.hostFName,
       totalGuests * currentListing.price,
       currentListing.hostAvatar,
+      currentListing.city,
+      currentListing.country,
     ]);
     setBookingModal(true);
   };
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Header />
 
       <div className="listing-container">
@@ -143,8 +150,8 @@ function Listing() {
             <ImageList
               variant="woven"
               sx={{
-                width: { xs: 230, sm: 300, md: 400, lg: 500, xl: 800 },
-                height: { xs: 270, sm: 300, md: 400, lg: 500, xl: 800 },
+                width: { xs: 230, sm: 300, md: 400, lg: 500, xl: 600 },
+                height: { xs: 270, sm: 300, md: 400, lg: 500, xl: 600 },
               }}
               cols={3}
             >
@@ -216,10 +223,11 @@ function Listing() {
             </div>
           </div>
           <div className="map">{mapGenetaor}</div>
-          <Divider></Divider>
 
           <div className="listing__booking-container">
-            <h2>Book {currentListing.hostFName}</h2>
+            <h2 className="bookingForm__title">
+              Book {currentListing.hostFName}
+            </h2>
             <FormControl className="bookingForm">
               <div className="bookingForm-left">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -284,7 +292,7 @@ function Listing() {
           </div>
         </section>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

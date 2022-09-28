@@ -1,0 +1,59 @@
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.whatIsDawat-container {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  padding: 0 5%;
+  background: rgb(252, 251, 250);
+  background: linear-gradient(
+    180deg,
+    rgba(252, 251, 250, 1) 65%,
+    rgba(151, 198, 128, 1) 100%
+  );
+}
+.body-video {
+  margin-top: 100px;
+  width: 500px;
+  border-radius: 10%;
+}
+.arrow-svg {
+  position: absolute;
+  top: 45%;
+  right: 1%;
+  z-index: 1;
+}
+.left__container {
+  position: relative;
+  //   width: 30%;
+  &-image {
+    max-width: 450px;
+  }
+  &__title {
+  }
+  &__text {
+  }
+  &__logo-title-container {
+  }
+}
+.right__container {
+  //   width: 70%;
+  &-svg {
+    height: 260px;
+  }
+}
+
+.guy-svg {
+  position: relative;
+  margin-bottom: 20px;
+  //   z-index: 1;
+  margin-right: -80px;
+}
+
+.lady-svg {
+  position: relative;
+  margin-left: -100px;
+}
