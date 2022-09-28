@@ -20,19 +20,19 @@
     justify-content: center;
   }
   &__title {
-    font-size: 70px;
+    font-size: 4.375rem;
     color: #fff;
     font-weight: 600;
     margin-top: 0;
     transition: 0.5s;
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
     font-family: "Typo Round", sans-serif;
     &:hover {
       -webkit-text-stroke: 2px #fff;
       color: transparent;
     }
     @include tablet {
-      font-size: 120px;
+      font-size: 7.5rem;
     }
   }
 }
@@ -42,14 +42,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 20px 8%;
+  padding: 1.25rem 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   &__list {
     list-style: none;
     display: inline-block;
-    margin-left: 40px;
+    margin-left: 2.5rem;
   }
   &__login-link {
     text-decoration: none;
@@ -57,7 +57,7 @@
 }
 
 .logo {
-  width: 120px;
+  width: 7.5rem;
 }
 
 .video {
@@ -118,7 +118,7 @@
 
   $root: &;
 
-  border-radius: 999px;
+  border-radius: 62.4375rem;
   border: 2px solid transparent;
   display: flex;
   transition: border-color var(--transition-time-icon) linear,

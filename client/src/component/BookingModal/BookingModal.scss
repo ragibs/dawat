@@ -45,11 +45,11 @@
     background-image: url(../../assets/images/checkoutphoto.jpg);
     height: 40%;
     background-position: 50%;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     @include tablet {
       width: 50%;
       height: 100%;
-      margin-right: 10px;
+      margin-right: 0.625rem;
     }
   }
   &__title {
@@ -86,7 +86,7 @@
     display: flex;
     justify-content: space-between;
     gap: 0.3125rem;
-    margin-top: 10px;
+    margin-top: 0.625rem;
     @include tablet {
       justify-content: flex-end;
     }

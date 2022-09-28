@@ -12,88 +12,101 @@
     rgba(252, 251, 250, 1) 88%,
     rgba(151, 198, 128, 1) 100%
   );
-}
-
-.searchlist__container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 30px;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.875rem;
+  }
+  &__result-header {
+    padding: 0 8%;
+  }
 }
 
 .search__result-header {
   padding: 0 8%;
 }
 
-.search-card-host {
-  display: grid;
-  grid-template-columns: 75px 1fr;
-  align-items: center;
-}
+.search {
+  &-card-host {
+    display: grid;
+    grid-template-columns: 4.6875rem 1fr;
+    align-items: center;
+  }
+  &-host-avatar {
+    width: 6.25rem;
+    height: 6.25rem;
+    object-fit: cover;
+    border-radius: 10%;
+    display: block;
+    overflow: hidden;
+    margin: 1rem 0.625rem;
+  }
+  &-host-name {
+    margin-left: 3.125rem;
+    color: $button-hover-color;
+  }
+  &-host-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+  &-card-h2 {
+    color: $primary-text-color;
+    &:hover {
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+      text-shadow: none;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+  &__price-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
 
-.search-host-avatar {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10%;
-  display: block;
-  overflow: hidden;
-  margin: 16px 10px;
-}
-.search-host-name {
-  margin-left: 50px;
-  color: $button-hover-color;
-}
-.search-host-name-prefix {
-  font-style: normal;
-  font-weight: 700;
-  color: #7a7a8c;
-}
-.search-card-h2 {
-  color: $primary-text-color;
-  &:hover {
-    background: linear-gradient(90deg, #ff8a00, #e52e71);
-    text-shadow: none;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
+  &__price {
+    color: white;
+    margin: 0;
+  }
+  &-card {
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    color: $primary-text-color;
+    min-height: 21.875rem;
+    width: 90%;
+    min-width: 15.625rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgb(233, 237, 201);
+    background: linear-gradient(
+      139deg,
+      rgba(233, 237, 201, 1) 64%,
+      rgba(30, 30, 47, 1) 100%
+    );
+    transition: 0.2s;
+    &:hover {
+      transform: translate(-1rem);
+    }
+    &:hover ~ .card {
+      transform: translateX(8.125rem);
+    }
   }
 }
+
 .mapboxgl-canvas {
-  border-radius: 5px;
+  display: none;
+  @include tablet {
+    display: flex;
+  }
 }
 
-.search__price-container {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
-
-.search__price {
-  color: white;
-  margin: 0;
-}
-.search-card {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  color: $primary-text-color;
-  min-height: 350px;
-  width: 90%;
-  min-width: 250px;
-  padding: 1.5rem;
-  border-radius: 16px;
-  background: rgb(233, 237, 201);
-  background: linear-gradient(
-    139deg,
-    rgba(233, 237, 201, 1) 64%,
-    rgba(30, 30, 47, 1) 100%
-  );
-  transition: 0.2s;
-  &:hover {
-    transform: translate(-1rem);
-  }
-  &:hover ~ .card {
-    transform: translateX(130px);
-  }
+.marker-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

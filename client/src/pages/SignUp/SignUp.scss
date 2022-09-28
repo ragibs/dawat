@@ -4,7 +4,7 @@
 @use "../../style/partials/global" as *;
 
 .signUp__component {
-  height: 100vh;
+  padding-bottom: 12.5rem;
   background: rgb(252, 251, 250);
   background: linear-gradient(
     180deg,
@@ -24,8 +24,8 @@
   justify-content: center;
   align-items: center;
   box-shadow: 3px 5px 25px #888888;
-  padding: 70px 40px;
-  border-radius: 25px;
+  padding: 4.375rem 2.5rem;
+  border-radius: 1.5625rem;
   max-width: 100%;
   @include tablet {
     max-width: 80%;
@@ -35,11 +35,11 @@
 .signUpForm {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
-  max-width: 400px;
+  max-width: 25rem;
 }
 
 .formField {
-  min-width: 300px;
+  min-width: 18.75rem;
 }

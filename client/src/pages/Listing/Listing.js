@@ -8,7 +8,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import Map from "react-map-gl";
+import Map, { Marker } from "react-map-gl";
 import { FormControl } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -18,6 +18,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import BookingModal from "../../component/BookingModal/BookingModal";
+import mapBoxMarker from "../../assets/Icons/mapbox-marker-icon-pink.svg";
 import { motion } from "framer-motion";
 
 function Listing() {
@@ -80,7 +81,16 @@ function Listing() {
         }}
         style={{ width: 400, height: 300, borderRadius: "5px" }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-      />
+      >
+        <Marker
+          latitude={currentListing.geo._lat}
+          longitude={currentListing.geo._long}
+        >
+          <button className="marker-btn">
+            <img src={mapBoxMarker} alt="" />
+          </button>
+        </Marker>
+      </Map>
     );
   } else {
     mapGenetaor = (

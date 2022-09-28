@@ -5,7 +5,7 @@
 
 .navbar-header {
   background-color: $primary-background-color;
-  margin: 20px 8%;
+  margin: 1.25rem 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,7 +14,7 @@
   &__list {
     list-style: none;
     display: inline-block;
-    margin-left: 40px;
+    margin-left: 2.5rem;
   }
   &__link {
     text-decoration: none;
@@ -23,5 +23,5 @@
 }
 
 .logo-header {
-  width: 120px;
+  width: 7.5rem;
 }

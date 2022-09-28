@@ -4,7 +4,7 @@
 @use "../../style/partials/global" as *;
 
 .whatIsDawat-container {
-  margin-top: 70px;
+  margin-top: 4.375rem;
   display: flex;
   justify-content: center;
   padding: 0 5%;
@@ -16,21 +16,37 @@
   );
 }
 .body-video {
-  margin-top: 100px;
-  width: 500px;
+  margin-top: 6.25rem;
+  width: 21rem;
   border-radius: 10%;
 }
 .arrow-svg {
-  position: absolute;
-  top: 45%;
-  right: 1%;
-  z-index: 1;
+  display: none;
+  @include desktop {
+    display: block;
+    position: absolute;
+    top: 45%;
+    right: 1%;
+    z-index: 1;
+  }
 }
 .left__container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include tablet {
+    flex-direction: row;
+  }
   //   width: 30%;
   &-image {
-    max-width: 450px;
+    max-width: 18.75rem;
+    @include tablet {
+      max-width: 21rem;
+    }
+    @include desktop {
+      max-width: 28.125rem;
+    }
   }
   &__title {
   }
@@ -40,20 +56,32 @@
   }
 }
 .right__container {
+  display: none;
+  @include desktop {
+    display: block;
+  }
   //   width: 70%;
   &-svg {
-    height: 260px;
+    height: 16.25rem;
   }
 }
 
 .guy-svg {
   position: relative;
-  margin-bottom: 20px;
-  //   z-index: 1;
-  margin-right: -80px;
+  margin-left: -1.25rem;
+  max-width: 20rem;
+  @include tablet {
+    margin-bottom: 1.25rem;
+    margin-left: 0;
+    //   z-index: 1;
+    margin-right: -5rem;
+  }
 }
 
 .lady-svg {
   position: relative;
-  margin-left: -100px;
+  max-width: 20rem;
+  @include tablet {
+    margin-left: -6.25rem;
+  }
 }
