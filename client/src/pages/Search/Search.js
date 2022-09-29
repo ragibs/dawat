@@ -6,28 +6,13 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import Header from "../../component/Header/Header";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import mapBoxMarker from "../../assets/Icons/mapbox-marker-icon-pink.svg";
 import { motion } from "framer-motion";
 
 function Search() {
   const [data, setData] = useState([]);
   const { cityId } = useParams();
-
-  let mapData = [
-    {
-      lat: 13.775433,
-      long: 100.512738,
-    },
-    {
-      lat: 13.708122982403381,
-      long: 100.52617985831239,
-    },
-    {
-      lat: 13.794065577842616,
-      long: 100.5049212010278,
-    },
-  ];
 
   //to properly format the search word
   const searchFunction = (word) => {
@@ -60,8 +45,6 @@ function Search() {
       .catch((error) => console.log(error));
   };
 
-  console.log(data);
-
   //mapGenerator
   let mapGenetaor;
   if (data.length !== 0) {
@@ -70,14 +53,18 @@ function Search() {
         className="search-map-map"
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         initialViewState={{
-          longitude: 100.5018,
-          latitude: 13.7563,
+          longitude: data[0].geo._long,
+          latitude: data[0].geo._lat,
           zoom: 10,
         }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
       >
-        {mapData.map((location, index) => (
-          <Marker key={index} latitude={location.lat} longitude={location.long}>
+        {data.map((location) => (
+          <Marker
+            key={location.listingId}
+            latitude={location.geo._lat}
+            longitude={location.geo._long}
+          >
             <button className="marker-btn">
               <img src={mapBoxMarker} alt="" />
             </button>

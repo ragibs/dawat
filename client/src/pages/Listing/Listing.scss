@@ -60,6 +60,7 @@
     font-family: "Typo Round";
     margin-bottom: 0px;
     @include tablet {
+      min-width: 5rem;
       max-width: 5.625rem;
     }
   }

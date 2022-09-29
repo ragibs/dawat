@@ -3,20 +3,22 @@
 @use "../../style/partials/mixins" as *;
 @use "../../style/partials/global" as *;
 
-.searchlist-component {
-  padding: 0 8%;
-  display: flex;
-  background: rgb(252, 251, 250);
-  background: linear-gradient(
-    180deg,
-    rgba(252, 251, 250, 1) 88%,
-    rgba(151, 198, 128, 1) 100%
-  );
+.searchlist {
+  &-component {
+    padding: 0 8%;
+    display: flex;
+    background: rgb(252, 251, 250);
+    background: linear-gradient(
+      180deg,
+      rgba(252, 251, 250, 1) 88%,
+      rgba(151, 198, 128, 1) 100%
+    );
+  }
   &__container {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    margin-bottom: 1.875rem;
+    margin-bottom: 3.875rem;
   }
   &__result-header {
     padding: 0 8%;
@@ -100,6 +102,8 @@
 
 .mapboxgl-canvas {
   display: none;
+  margin-bottom: 100px;
+  width: 400px;
   @include tablet {
     display: flex;
   }

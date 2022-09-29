@@ -59,8 +59,6 @@ function Reservation() {
       .catch((error) => console.log(error));
   };
 
-  console.log(data);
-
   return (
     <motion.div
       className="reservation-component"
