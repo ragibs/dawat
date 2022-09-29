@@ -52,5 +52,5 @@ To book a reservation, just click BOOK. No payment info required.
 
 ## Few things to note
 
-- Develop branch is the most update branch
+- Develop branch is the most updated branch
 - server folder is current a work in progress as I want to implement a relational database using a ORM
