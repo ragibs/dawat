@@ -1,4 +1,5 @@
 
+
 # dawat
 
 Dawat is an online platform where guests can book authentic home-cooked meal experiences with hosts from all around the world.
@@ -49,8 +50,3 @@ To book a reservation, just click BOOK. No payment info required.
 - Mapbox marker popup functionity
 - Designing updates
 
-
-## Few things to note
-
-- Develop branch is the most updated branch
-- server folder is current a work in progress as I want to implement a relational database using a ORM

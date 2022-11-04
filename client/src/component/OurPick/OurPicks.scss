@@ -1,0 +1,143 @@
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.ourPicks {
+  display: flex;
+  background-color: $primary-background-color;
+  align-items: center;
+  flex-direction: column;
+
+  &__title {
+    color: $primary-text-color;
+    font-size: 3.75rem;
+    font-family: "Typo Round", sans-serif;
+    @include tablet {
+      font-size: 4.375rem;
+    }
+  }
+  &__subtext {
+    padding: 0px 8%;
+    @include body-large-mobile;
+    font-size: 1.125rem;
+    text-align: center;
+  }
+}
+
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  text-decoration: none;
+  color: white;
+  height: 21.875rem;
+  width: 100%;
+  min-width: 15.625rem;
+  max-width: 25rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: #e9edc9;
+  margin-bottom: 1.25rem;
+  @include tablet {
+    margin-bottom: 0;
+  }
+  box-shadow: rgba(0, 0, 0, 0.3) 0rem 1.1875rem 2.375rem,
+    rgba(0, 0, 0, 0.22) 0rem 0.9375rem 0.75rem;
+  transition: 0.2s;
+  &:hover {
+    transform: translateY(-1rem);
+    background-color: $button-hover-color;
+  }
+  &:hover ~ .card {
+    transform: translateY(8.125rem);
+    @include tablet {
+      transform: translateX(8.125rem);
+    }
+  }
+  &:not(:first-child) {
+    @include tablet {
+      margin-left: -8.125rem;
+    }
+  }
+  &-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    background: rgb(252, 251, 250);
+    color: white;
+    font-family: "Inter";
+    @include tablet {
+      flex-direction: row;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0.625rem;
+      height: 0.625rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #201c29;
+      border-radius: 0.625rem;
+      box-shadow: inset 0.125rem 0.125rem 0.125rem hsla(0, 0%, 100%, 0.25),
+        inset -0.125rem -0.125rem 0.125rem rgba(0, 0, 0, 0.25);
+    }
+    &::-webkit-scrollbar-track {
+      background: linear-gradient(
+        90deg,
+        #201c29,
+        #201c29 1px,
+        #17141d 0,
+        #17141d
+      );
+    }
+  }
+  &-h2 {
+    color: $primary-text-color;
+    @include tablet {
+      margin: 0;
+    }
+    &:hover {
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+      text-shadow: none;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+  &-quote {
+    font-style: italic;
+    min-height: 6.25rem;
+    color: $primary-text-color;
+  }
+  &-host {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4.6875rem 1fr;
+    align-items: center;
+    // margin: 3rem 0 0;
+  }
+}
+
+.host {
+  &-avatar {
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 25%;
+    display: block;
+    overflow: hidden;
+    margin: 1rem 0.625rem;
+    object-fit: cover;
+  }
+  &-name {
+    margin-left: 3.125rem;
+    color: #7a7a8c;
+  }
+  &-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: $primary-text-color;
+  }
+}

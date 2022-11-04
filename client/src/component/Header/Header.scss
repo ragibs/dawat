@@ -1,0 +1,27 @@
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.navbar-header {
+  background-color: $primary-background-color;
+  margin: 1.25rem 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid silver;
+
+  &__list {
+    list-style: none;
+    display: inline-block;
+    margin-left: 2.5rem;
+  }
+  &__link {
+    text-decoration: none;
+    color: $button-hover-color;
+  }
+}
+
+.logo-header {
+  width: 7.5rem;
+}

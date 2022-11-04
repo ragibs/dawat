@@ -1,0 +1,116 @@
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.searchlist {
+  &-component {
+    padding: 0 8%;
+    display: flex;
+    background: rgb(252, 251, 250);
+    background: linear-gradient(
+      180deg,
+      rgba(252, 251, 250, 1) 88%,
+      rgba(151, 198, 128, 1) 100%
+    );
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3.875rem;
+  }
+  &__result-header {
+    padding: 0 8%;
+  }
+}
+
+.search__result-header {
+  padding: 0 8%;
+}
+
+.search {
+  &-card-host {
+    display: grid;
+    grid-template-columns: 4.6875rem 1fr;
+    align-items: center;
+  }
+  &-host-avatar {
+    width: 6.25rem;
+    height: 6.25rem;
+    object-fit: cover;
+    border-radius: 10%;
+    display: block;
+    overflow: hidden;
+    margin: 1rem 0.625rem;
+  }
+  &-host-name {
+    margin-left: 3.125rem;
+    color: $button-hover-color;
+  }
+  &-host-name-prefix {
+    font-style: normal;
+    font-weight: 700;
+    color: #7a7a8c;
+  }
+  &-card-h2 {
+    color: $primary-text-color;
+    &:hover {
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+      text-shadow: none;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+  &__price-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+
+  &__price {
+    color: white;
+    margin: 0;
+  }
+  &-card {
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    color: $primary-text-color;
+    min-height: 21.875rem;
+    width: 90%;
+    min-width: 15.625rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgb(233, 237, 201);
+    background: linear-gradient(
+      139deg,
+      rgba(233, 237, 201, 1) 64%,
+      rgba(30, 30, 47, 1) 100%
+    );
+    transition: 0.2s;
+    &:hover {
+      transform: translate(-1rem);
+    }
+    &:hover ~ .card {
+      transform: translateX(8.125rem);
+    }
+  }
+}
+
+.mapboxgl-canvas {
+  display: none;
+  margin-bottom: 100px;
+  width: 400px;
+  @include tablet {
+    display: flex;
+  }
+}
+
+.marker-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

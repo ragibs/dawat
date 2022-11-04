@@ -1,0 +1,45 @@
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.signUp__component {
+  padding-bottom: 12.5rem;
+  background: rgb(252, 251, 250);
+  background: linear-gradient(
+    180deg,
+    rgba(252, 251, 250, 1) 65%,
+    rgba(254, 186, 136, 1) 100%
+  );
+}
+
+.signUp {
+  display: flex;
+  justify-content: center;
+}
+
+.signUp__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 5px 25px #888888;
+  padding: 4.375rem 2.5rem;
+  border-radius: 1.5625rem;
+  max-width: 100%;
+  @include tablet {
+    max-width: 80%;
+  }
+}
+
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  max-width: 25rem;
+}
+
+.formField {
+  min-width: 18.75rem;
+}

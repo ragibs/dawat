@@ -1,23 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound/NotFound";
+import HomePage from "./pages/HomePage/HomePage";
+import Listing from "./pages/Listing/Listing";
+import Login from "./pages/Login/Login";
+import Search from "./pages/Search/Search";
+import SignUp from "./pages/SignUp/SignUp";
+import { AuthContextProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./component/ProtectedRoute/ProtectedRoute";
+import Reservation from "./pages/Reservation/Reservation";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Footer from "./component/Footer/Footer";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      type: "light",
+      primary: {
+        main: "#97c680",
+      },
+      secondary: {
+        main: "#feba88",
+      },
+      background: {
+        default: "#fcfbfa",
+      },
+      text: {
+        primary: "#1e1e2f",
+      },
+      error: {
+        main: "#d22d2d",
+      },
+    },
+    typography: {
+      fontFamily: "Inter",
+    },
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <AuthContextProvider>
+          <ThemeProvider theme={theme}>
+            <AnimatePresence>
+              <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="*" element={<NotFound />} />
+                <Route path="/search/:cityId" element={<Search />} />
+                <Route
+                  path="/reservation"
+                  element={
+                    <ProtectedRoute>
+                      <Reservation />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/:listingId" element={<Listing />} />
+              </Routes>
+            </AnimatePresence>
+            <Footer />
+          </ThemeProvider>
+        </AuthContextProvider>
+      </BrowserRouter>
     </div>
   );
 }

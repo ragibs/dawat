@@ -1,0 +1,170 @@
+@use "../../style/partials/colors" as *;
+@use "../../style/partials/variables" as *;
+@use "../../style/partials/mixins" as *;
+@use "../../style/partials/global" as *;
+
+.listing {
+  &-container {
+    padding: 1.25rem 8%;
+    padding-top: 0;
+    gap: 1.25rem;
+    background: rgb(252, 251, 250);
+    background: linear-gradient(
+      180deg,
+      rgba(252, 251, 250, 1) 88%,
+      rgba(151, 198, 128, 1) 100%
+    );
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__left {
+    @include tablet {
+      max-width: 50%;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+    }
+  }
+  &__right {
+    @include tablet {
+      max-width: 50%;
+      margin-top: 1.25rem;
+    }
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+  }
+  &__text {
+    font-weight: 500;
+  }
+  &__main-info {
+  }
+  &__host-info {
+  }
+  &__name-image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__tags {
+    color: $button-hover-color;
+    font-family: "Typo Round";
+  }
+  &__tags-small {
+    color: $search-hover-color;
+    font-family: "Typo Round";
+    margin-bottom: 0px;
+    @include tablet {
+      min-width: 5rem;
+      max-width: 5.625rem;
+    }
+  }
+  &__hostFName {
+    margin-top: 5rem;
+    font-weight: 800;
+  }
+  &__info {
+  }
+  &__description-misc {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      width: 80%;
+    }
+  }
+  &__misc-container {
+  }
+  &__misc-text {
+  }
+}
+
+.back-button-desktop {
+  align-self: flex-end;
+  display: none;
+  @include tablet {
+    display: flex;
+  }
+}
+
+.back-button-container {
+  display: flex;
+  justify-content: flex-end;
+  @include tablet {
+    display: none;
+  }
+}
+
+.listing__booking-container {
+  box-shadow: rgba(0, 0, 0, 0.18) 0rem 0.125rem 0.25rem;
+  border-radius: 0.3125rem;
+  padding: 1.25rem 8%;
+  margin-top: 1.25rem;
+  padding-top: 2.1875rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  // max-width: 302px;
+  @include tablet {
+    max-width: 25rem;
+    margin-bottom: 9.375rem;
+  }
+}
+
+.bookingForm {
+  display: flex;
+  gap: 1.25rem;
+  &__field {
+    max-width: 14.375rem;
+    min-width: 11.25rem;
+  }
+  &-right {
+    display: flex;
+    justify-content: space-between;
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &-left {
+    display: flex;
+    flex-direction: column;
+  }
+  &__total {
+    font-size: 1rem;
+  }
+  &__title {
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+a.mapboxgl-ctrl-logo {
+  display: none;
+}
+
+.map {
+  display: none;
+  @include tablet {
+    display: flex;
+  }
+  margin-bottom: 1.25rem;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+.mapboxgl-ctrl {
+  display: none;
+}
